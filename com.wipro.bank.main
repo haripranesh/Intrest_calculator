@@ -1,0 +1,17 @@
+package com.wipro.bank.main;
+import com.wipro.bank.service.BankService;
+import java.util.*;
+public class MainClass {
+    public static void main(String[] args) {
+        
+        int tenure,age;
+        float principal;
+        String gender;
+        
+   
+     
+       // BankService a=new BankService();
+       // a.calculate(principal,tenure,age,gender);
+       
+    } 
+}
