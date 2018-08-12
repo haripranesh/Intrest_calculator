@@ -1,0 +1,45 @@
+
+package com.wipro.bank.service;
+import com.wipro.bank.exception.*;
+import com.wipro.bank.acc.*;
+import RDAccount.*;
+public class BankService {
+    public float sd=0;
+    
+    public void calculate(float principal,int tenure,int age,String gender)
+    {
+        if(validateData(principal,tenure,age,gender))
+        {
+            RDAccount rda=new RDAccount(tenure,principal);
+            rda.setInterest(age, gender);
+            sd=rda.calculateInterest();
+            System.out.println(sd);
+            System.out.println(rda.calculateAmountDeposited());            
+        }
+    }  
+    
+    public boolean validateData(float principal, int tenure,int age, String gender)
+    {
+        gender=gender.toLowerCase();
+        try
+        {
+            if(principal>=500 && (tenure==5 || tenure==6) && (gender.equals("male") || gender.equals("female")) && (age>1 && age<100))       
+            {
+                return true; 
+            }
+            else
+            {
+                BankValidationException obj=new BankValidationException();
+                System.out.println(obj.toString());
+                throw new Exception();
+            }
+        }
+        catch(Exception e)
+        {
+            return false;
+        }
+    }
+    
+    
+    
+}
